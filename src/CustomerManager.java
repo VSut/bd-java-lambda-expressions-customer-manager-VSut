@@ -25,6 +25,11 @@ public class CustomerManager {
      */
     public List<String> checkCustomers() {
         DatabaseManager databaseManager = new DatabaseManager();
+        databaseManager.getCustomers().forEach(customer -> {
+            if (databaseManager.checkCustomer(customer) == false) {
+                databaseManager.emailCustomer(customer);
+            }
+        });
         // TODO Get Customers from DatabaseManager using the method getCustomers
 
         // TODO Use List's forEach() method with a lambda expression to check the status for each customer,
